@@ -1,0 +1,11 @@
+1:使用solrj客户端上传索引出现500问题
+  1-1）看application-solr文件是否出现错误，地址有很严格的要求
+  http://localhost:8983/solr/TestSolr
+  1-2）在Control层看一下RequestMapping和return的地方地址是否写错
+2：使用中文分词查询出现链接丢失的问题
+  因为在进行分词的时候需要JVM内存，所以要solr start -m 1g 分配内存
+3:如何将数据库信息导入索引库以及配置中文分词
+  1：使用solrj客户端将对象书写到创建的solr应用上
+  2：在主文件上面进行修改managed-schema或者复制一个出来重命名为schema.xml文件，然后再里面配置业务逻辑（刚刚书写进去的对象会在配置文件里面自动生成，只要根据索引查找就可以），将需要的索引的type类型配置为IK分词的ID，并且创建
+<field name="item_keyword" type="text_ik" multiValued="false" indexed="true" stored="true"/>
+将name值配置到复制域上面即可调用。

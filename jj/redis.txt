@@ -1,0 +1,26 @@
+启动命令：redis-server.exe redis.windows.conf
+安装命令:
+redis-server.exe --service-install redis.windows.conf --loglevel verbose 
+卸载命令：
+ redis-server --service-uninstall
+
+1：安装redis需要设置两个属性
+   maxmemory(最大缓存)
+   requirepass（密码）集群当中就不用设置密码
+
+2:redis集群（windows版本配置） 
+  2-1：安装ruby客户端rubyinstall,因为ruby是没有SSL证书的，无法使得节点之间通信，所以为了解决问题，必须下载cacert.pem文件，然后再环境变量里面配置SSL_CERT_FILE，属性值指向下载的文件
+  2-2：创建集群，实际上就是创建不同端口的redis，首先创造文件夹，最少6个，因为有三个主要的三个备用的，然后从redis的根目录上面拷贝redis.windows.conf和redis-server.exe到每个文件夹里面。然后修改文件夹里面的.conf文件的属性
+  
+  port 7001（对应文件夹的端口号）
+  cluster-enabled yes
+  cluster-config-file nodes.conf
+  cluster-node-timeout 5000
+  appendonly yes
+要切记不要给集群当中的节点设置密码，而且修改属性执行要去除#注释，不然无效
+  
+  2-3：因为windos版本是没有ruby的支持，所以要想创建集群，必须先下载一个文件，去官网下载最新版本的redis(Linux版)，解压出来，然后在里面找到一个redis-trib.rb文件，将它拷贝到redis安装目录下即可；然后每个节点通过命令打开 redis-server redis.windows.conf,然后到redis安装目录下，输入以下命令
+ ruby redis-trib.rb create --replicas 1 127.0.0.1:7001(每个节点的端口)
+ 然后它会问你是否通过，你打yes即可
+  2-4：集群是否创建成功，可以通过redis-cli -c -p 7001链接其中的一个节点，设置一个name看一下另外一个节点是否会响应 
+  

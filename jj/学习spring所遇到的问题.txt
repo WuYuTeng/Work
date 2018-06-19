@@ -1,0 +1,15 @@
+1:创建beans标签一直提示报错
+  在idea上面找到plugins选项，然后将IntellLang选项关闭掉，取消自我检测就行了
+
+2:使用log4j一直输出不了文件路径
+  log4j.properties文件的路径配置错误，注意大小写
+
+3:使用aspect切面编程出现切面无效的问题
+  第一步：导入aspectjweaver,aopalliance这两个注解包
+          还有spring-aop,spring-aspects两个包
+  第二步：创建切面类，添加两个重要的注解@Component,@Aspect
+  第三步：在配置文件里面添加扫描注解以及aop-proxy即可
+4:注解和注入开发容易混淆
+  注入其实就是通过一个个bean标签将对象放到spring的管理容器里面，而注解，则只需要开启扫描器，然后就可以进行注解开发了，有好有坏，并非所有的对象都可以用注解解决，例如JDBC数据库配置。
+  
+  

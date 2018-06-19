@@ -1,0 +1,5 @@
+git pull刷新一遍本地仓库
+git status查看提交状态
+git log 查看提交日志
+git check -b 分支名代表创建分支并且切换到分支
+git branch显示当前本地所拥有的分支

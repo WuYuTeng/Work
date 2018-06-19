@@ -1,0 +1,31 @@
+maven
+1,怎么将包放进本地仓库--》复制相对应的jar到maven的本地仓库就可以了
+
+mybatis
+1无法进行插入操作--》mapper.xml的头部分声明写错了，注意书写格式
+
+2.Sqlsession获取失败，因为没有写预先执行声明，所以直接实例会出错
+@Before
+    public void init(){
+        InputStream ii=null;
+        try {
+            ii=Resources.getResourceAsStream("Mybatis_Config.xml");
+            sessionFactory=new SqlSessionFactoryBuilder().build(ii);
+        }catch (IOException e){
+         e.printStackTrace();
+        }
+    }
+
+3：idea上面无法扫描到maven项目下的mapper文件
+
+解决方法：
+    <build>
+       <resources>
+            <resource>
+                <directory>src/main/java</directory><!--指向到mapper存在的地址，这样就可以解析xml文件-->
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>

@@ -1,0 +1,37 @@
+MVC开发模式
+
+
+db-->domain-->dao-->service-->servlet
+
+JSP标签库
+  
+  <C:forEach></C:forEach>
+    
+
+    http://intellij.mandroid.cn/
+　　http://idea.imsxm.com/
+　　http://idea.iteblog.com/key.php
+       
+    JetBrains
+
+    WebStrom数据集成相对于DW要领先很多，使用便捷
+     
+     HTML
+     HTML5 
+     DW
+http://www.cnblogs.com/yangyquin/p/5285272.html
+
+项目管理工具
+git和svn
+
+maven
+
+JDBC+mybatis
+
+Spring
+
+SpringMVC
+
+SSM
+
+

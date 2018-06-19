@@ -1,0 +1,11 @@
+1：文件夹的作用
+ bin:存放可执行文件，通常用于启动和关闭
+ conf:存放tomcat的配置文件，通常会配置server.xml文件解决端口冲突问题（0-3999
+）端口不能设置，因为被windows系统先拿去使用了
+ log:存放运行日志文件
+ webapps:用来存放运行的项目，如果项目没有在该目录下面，将会导致出错 
+
+2:Tomcat的配置
+ 2-1:JAVA_HOME-----C:\Program Files (x86)\Java\jdk1.8.0_121
+ 2-2:CATALINA_HOME-----D:\tomcat8.0\apache-tomcat-8.0.9
+ 2-3:CATALINA_BASE-----D:\tomcat8.0\apache-tomcat-8.0.9

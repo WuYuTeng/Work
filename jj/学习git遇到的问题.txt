@@ -1,0 +1,13 @@
+1:ssh密匙提交一直提交不上去
+  在第一次提交之前要先git pull --rebase origin master将分支合并到主线上
+然后再进行推送提交（git push -u origin master）
+  第二种情况则可能是本地的密匙出现问题，删除C:\Users\Hobbitman\.ssh路径下
+面的所有文件，在命令行里面打ssh-keygen -t rsa -b 4096 -C“ your_email@example.com ”
+重新生成密匙，然后回到文件夹，打开后缀为.pub的文件，复制里面的密匙信息，到
+github的官网重新创建，然后回到命令行使用ssh -t git@github.com进行连接测试
+
+2:关于分支以及代码合并的问题
+  首先开发当中可以先自己通过git checkout -b 分支名创建以及切换到分支下面，
+创建完成之后，使用git branch命令查看当前本地拥有几条分支，然后在自己的分支下面进行
+代码修改，修改完成之后直接git commit,接着使用git push -u 分支名（记得多多使用分支
+，避免影响项目进度）
